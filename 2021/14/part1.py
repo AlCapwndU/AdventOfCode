@@ -23,10 +23,9 @@ def run(data):
         polymer_len = 1
         for pair in polymer:
             polymer_len += polymer[pair]
-    mol_count = defaultdict(int)
-    for i, pair in enumerate(polymer):
+    mol_count = defaultdict(int, {template[-1]:1})
+    for pair in polymer:
         mol_count[pair[0]] += polymer[pair]
-        if i == len(polymer) - 1:
-            mol_count[pair[1]] += 1
+
 
     return mol_count[max(mol_count, key=mol_count.get)] - mol_count[min(mol_count, key=mol_count.get)]

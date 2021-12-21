@@ -9,7 +9,7 @@ file_format = "line"
 base_type = str
 null_value = int
 example_result_part1 = 1588
-example_result_part2 = None
+example_result_part2 = 2188189693529
 
 example_data = ingest("./example.input", file_format, base_type=base_type, null_value=null_value)
 real_data = ingest("./real.input", file_format, base_type=base_type, null_value=null_value)
