@@ -23,7 +23,6 @@ def ingest(filename, file_format, base_type=str):
     :param filename:
     :param file_format:
     :param base_type:
-    :param null_value:
     :return:
     """
     if file_format == "raw":
