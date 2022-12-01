@@ -17,7 +17,7 @@ def ingest(filename, file_format, base_type=str, null_value=int):
     if file_format == "raw":
         data = open(filename).read()
     elif file_format == "line":
-        data = [base_type(line.strip().strip()) for line in open(filename).readlines()]
+        data = [line.strip().strip() for line in open(filename).readlines()]
     elif file_format == "tuple":
         [tuple([col for col in line.strip().split()]) for line in open(filename).readlines()]
     elif file_format == "list":
