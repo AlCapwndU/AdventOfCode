@@ -10,10 +10,12 @@ def base_type_conversion(value, base_type):
 def ingest(filename, file_format, base_type=str, null_value=int):
     """
     file_format types:
-    0: raw
-    1: line separated
-    2: tuple per line
-    3: comma seperated per line
+    raw: raw
+    line: line separated
+    tuple: tuple per line
+    list: comma seperated list per line, if only 1 line, only return the list for that line
+    grid: return a dictionary of coordinate keys, with the value of that coord in the values
+
 
 
     :param filename:
@@ -28,6 +30,8 @@ def ingest(filename, file_format, base_type=str, null_value=int):
         [tuple([col for col in line.strip().split()]) for line in open(filename).readlines()]
     elif file_format == "list":
         data = [[base_type_conversion(val, base_type) for val in line.strip().split(",")] for line in open(filename).readlines()]
+        if len(data) == 1:
+            data = data[0]
     elif file_format == "grid":
         data = {}
         for j, line in enumerate(open(filename).readlines()):
