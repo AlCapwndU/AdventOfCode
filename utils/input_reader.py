@@ -30,7 +30,7 @@ def ingest(filename, file_format, base_type=str):
     elif file_format == "line":
         data = [base_type_conversion(line.strip().strip(), base_type) for line in open(filename).readlines()]
     elif file_format == "tuple":
-        [tuple([col for col in line.strip().split()]) for line in open(filename).readlines()]
+        data = [tuple([col for col in line.strip().split()]) for line in open(filename).readlines()]
     elif file_format == "list":
         data = [[base_type_conversion(val, base_type) for val in line.strip().split(",")] for line in
                 open(filename).readlines()]
