@@ -3,10 +3,10 @@ import part1
 import part2
 
 # format options: raw, line, tuple, list, grid
-file_format = "line"
-base_type = int
-example_result_1 = None
-example_result_2 = None
+file_format = "raw"
+base_type = str
+example_result_1 = 10605
+example_result_2 = 2713310158
 
 
 def test_part1():

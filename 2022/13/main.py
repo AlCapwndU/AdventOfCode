@@ -4,9 +4,9 @@ import part2
 
 # format options: raw, line, tuple, list, grid
 file_format = "line"
-base_type = int
-example_result_1 = None
-example_result_2 = None
+base_type = str
+example_result_1 = 13
+example_result_2 = 140
 
 
 def test_part1():

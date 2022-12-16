@@ -3,10 +3,10 @@ import part1
 import part2
 
 # format options: raw, line, tuple, list, grid
-file_format = "line"
+file_format = "tuple"
 base_type = int
-example_result_1 = None
-example_result_2 = None
+example_result_1 = 13
+example_result_2 = 36
 
 
 def test_part1():
@@ -28,7 +28,13 @@ def test_part2():
         # do test on example data
         example_data = ingest("example.input", file_format, base_type=base_type)
 
-        assert part2.run(example_data) == example_result_2
+        assert part2.run(example_data) == 1
+
+        large_example_data = ingest("large_example.input", file_format, base_type=base_type)
+
+        assert part2.run(large_example_data) == example_result_2
+
+
 
         # if test passed, do the real input
         real_data = ingest("real.input", file_format, base_type=base_type)

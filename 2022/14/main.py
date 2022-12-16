@@ -4,8 +4,8 @@ import part2
 
 # format options: raw, line, tuple, list, grid
 file_format = "line"
-base_type = int
-example_result_1 = None
+base_type = str
+example_result_1 = 24
 example_result_2 = None
 
 
