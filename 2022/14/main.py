@@ -6,7 +6,7 @@ import part2
 file_format = "line"
 base_type = str
 example_result_1 = 24
-example_result_2 = None
+example_result_2 = 93
 
 
 def test_part1():

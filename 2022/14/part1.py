@@ -1,8 +1,8 @@
 from collections import defaultdict
-
+import numpy as np
 
 def run(data):
-    caves = defaultdict(lambda x: ".")
+    caves = defaultdict(lambda: ".")
 
     for structure in data:
         points = []
@@ -19,6 +19,44 @@ def run(data):
                 for n in range(points[i - 1][0], points[i][0],
                                int(((points[i][0] - points[i - 1][0]) / abs(points[i][0] - points[i - 1][0])))):
                     caves[(n, points[i][1])] = "#"
-        print(points)
+    max_y = max(coord[1] for coord in caves)
+    previous_path = [None]
+    current_path = []
+    sand_count = -2
+    while previous_path != current_path:
+        sand_count +=1
+        previous_path = current_path
+        current_path = [(500, 0)]
+        sand = (500, 0)
+        while sand[1] <= max_y:
+            if caves[tuple(np.add(sand, (0, 1)))] == ".":
+                sand = tuple(np.add(sand, (0, 1)))
+                current_path.append(sand)
+                continue
+            elif caves[tuple(np.add(sand, (-1, 1)))] == ".":
+                sand = tuple(np.add(sand, (-1, 1)))
+                current_path.append(sand)
+                continue
+            elif caves[tuple(np.add(sand, (1, 1)))] == ".":
+                sand = tuple(np.add(sand, (1, 1)))
+                current_path.append(sand)
+                continue
+            else:
+                caves[sand] = "o"
+                break
 
-    return
+
+
+
+    max_x = max([coord[0] for coord in caves])+1
+
+
+    caves_list = [["."]*max_x for _ in range(max_y+1)]
+
+    for coord in caves:
+        if coord[1] <= max_y:
+            caves_list[coord[1]][coord[0]] = caves[coord]
+    print()
+    for line in caves_list:
+        print("".join(line))
+    return sand_count
